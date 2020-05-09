@@ -1,49 +1,48 @@
 # PlantUML Go Client
-This project provides a handy CLI for PlantUML users. 
 
-## Motivation 
+This project provides a handy CLI for PlantUML users.
+
+## Motivation
+
 * Self-contained tool
 * Non-Java
 * Able to work with hosted PlantUML server
-* Produces "Text Format" 
+* Produces "Text Format"
 * Produces Link
 * Produced Images (Wow!)
-* Learn [Go][http://golang.org] 
+* Useful app I wanted to improve forked from [this repo](https://github.com/yogendra/plantuml-go)
 
-## How to use?
+## Usage
 
 Get go package first.
 
 ```shell
-go get http://github.com/yogendra/plantuml-go
-```
-_I am too new to Go and I could be wrong_ 
-
-Now, run `plantuml-go`
-
-```shell
-plantuml-go my-uml.puml
+go get github.com/acarlson99/goplantuml
+goplantuml - my-uml.puml
 ```
 
-or
-
 ```shell
-echo "@startuml 
+$ echo "@startuml
 a -> b : hello world
-@enduml" | plantuml-go
+@enduml" | goplantuml                  # reads from stdin, outputs to `uml_out.png`
+$ goplantuml test.puml                 # reads from file, outputs to `test.png`
+$ goplantuml -format txt test.puml     # reads from file, outputs to `test.txt`
+$ cat test.txt
+     ┌───┐          ┌─────┐
+     │Bob│          │Alice│
+     └─┬─┘          └──┬──┘
+       │    hello      │   
+       │──────────────>│   
+     ┌─┴─┐          ┌──┴──┐
+     │Bob│          │Alice│
+     └───┘          └─────┘
+$ goplantuml -help
+  -format format
+    	Output format type. (Options: png,svg,txt) (default "png")
+  -help
+    	Show help (this) text
+  -server server
+    	Plantuml server address. Used when generating link or extracting output (default "http://plantuml.com/plantuml")
+  -type string
+    	Indicates if output type. (Options: save,link,hash) (default "save")
 ```
-
-### How to generate images?
-
-User `-f png -o output` options on command line
-
-```shell 
-plantuml-go -f png -o output my-uml.puml
-```
-
-Above command will create a `my-uml.png` file next to `my-uml.puml` file (same director).
- 
-##ToDo
-* CD/CI
-* Release
-* Improve Test Coverage
