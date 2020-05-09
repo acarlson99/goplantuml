@@ -18,7 +18,7 @@ Get go package first.
 
 ```shell
 go get github.com/acarlson99/goplantuml
-goplantuml - my-uml.puml
+goplantuml my-uml.puml
 ```
 
 ```shell
